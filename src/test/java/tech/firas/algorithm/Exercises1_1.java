@@ -136,4 +136,22 @@ public final class Exercises1_1 {
         Assert.assertEquals(30, Exercise1_1_14.lg(0x40000000));
         Assert.assertEquals(30, Exercise1_1_14.lg(0x7FFFFFFF));
     }
+
+    @Test
+    public void problem16() {
+        Assert.assertEquals("11", Exercise1_1_16.exR1(1));
+        Assert.assertEquals("22", Exercise1_1_16.exR1(2));
+        Assert.assertEquals("3113", Exercise1_1_16.exR1(3));
+        Assert.assertEquals("114224", Exercise1_1_16.exR1(4));
+        Assert.assertEquals("311361142246", Exercise1_1_16.exR1(6));
+    }
+
+    @Test
+    public void problem20() {
+        Assert.assertEquals(0, Exercise1_1_20.lnFactorial(0), 1e-8);
+        Assert.assertEquals(0, Exercise1_1_20.lnFactorial(1), 1e-8);
+        Assert.assertEquals(Math.log(2), Exercise1_1_20.lnFactorial(2), 1e-8);
+        Assert.assertEquals(Math.log(6), Exercise1_1_20.lnFactorial(3), 1e-8);
+        Assert.assertEquals(Math.log(24), Exercise1_1_20.lnFactorial(4), 1e-8);
+    }
 }

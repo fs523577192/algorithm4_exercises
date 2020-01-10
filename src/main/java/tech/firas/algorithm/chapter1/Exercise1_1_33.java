@@ -1,4 +1,4 @@
-package tech.firas.algorithm;
+package tech.firas.algorithm.chapter1;
 
 public final class Exercise1_1_33 {
 

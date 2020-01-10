@@ -1,4 +1,4 @@
-package tech.firas.algorithm;
+package tech.firas.algorithm.chapter1;
 
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
@@ -8,6 +8,8 @@ import java.util.Random;
 
 import org.junit.Test;
 import org.junit.Assert;
+
+import tech.firas.algorithm.StdOut;
 
 public final class Exercises1_1 {
 
@@ -194,6 +196,8 @@ public final class Exercises1_1 {
 
             Assert.assertEquals(0.0, Exercise1_1_33.Matrix.dot(zero, a), 1e-8);
             Assert.assertEquals(0.0, Exercise1_1_33.Matrix.dot(a, zero), 1e-8);
+
+            Assert.assertTrue(Exercise1_1_33.Matrix.dot(a, a) >= 0.0);
 
             Assert.assertEquals(Exercise1_1_33.Matrix.dot(a, b), Exercise1_1_33.Matrix.dot(b, a), 1e-8);
 

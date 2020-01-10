@@ -1,4 +1,6 @@
-package tech.firas.algorithm;
+package tech.firas.algorithm.chapter1;
+
+import tech.firas.algorithm.StdOut;
 
 public final class Exercise1_1_5 {
 

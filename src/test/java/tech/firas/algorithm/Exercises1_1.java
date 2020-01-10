@@ -4,11 +4,14 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 import org.junit.Test;
 import org.junit.Assert;
 
 public final class Exercises1_1 {
+
+    private Random random = new Random();
 
     @Test
     public void problem1() {
@@ -105,6 +108,17 @@ public final class Exercises1_1 {
     }
 
     @Test
+    public void problem8() {
+        // 1.1.8. What do each of the following print?
+        StdOut.println('b'); // b
+        StdOut.println('b' + 'c'); // 197
+        // 'b' and 'c' are converted to integers 98 and 99 by Unicode encoding before they can be added
+        StdOut.println((char)('a' + 4)); // e
+        // 'a' are converted to the integer 97 by Unicode encoding before it can be added by 4
+        // then the sum 101 are converted to the character 'e' by Unicode decoding
+    }
+
+    @Test
     public void problem12() throws UnsupportedEncodingException {
         final ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos, true, "UTF-8"));
@@ -153,5 +167,41 @@ public final class Exercises1_1 {
         Assert.assertEquals(Math.log(2), Exercise1_1_20.lnFactorial(2), 1e-8);
         Assert.assertEquals(Math.log(6), Exercise1_1_20.lnFactorial(3), 1e-8);
         Assert.assertEquals(Math.log(24), Exercise1_1_20.lnFactorial(4), 1e-8);
+    }
+
+    @Test
+    public void problem33() {
+        testVectorDot();
+    }
+
+    private void testVectorDot() {
+        for (int i = 0; i < 100; i += 1) {
+            final int length = random.nextInt(10) + 1; // from 1 to 10
+            final double k = (random.nextBoolean() ? -1 : 1) * random.nextInt(10000) / (1.0 + random.nextInt(10000));
+            final double[] zero = new double[length];
+            final double[] a = new double[length];
+            final double[] b = new double[length];
+            final double[] c = new double[length];
+            final double[] bPlusC = new double[length];
+            final double[] kb = new double[length];
+            for (int j = 0; j < length; j += 1) {
+                a[j] = (random.nextBoolean() ? -1 : 1) * random.nextInt(10000) / (1.0 + random.nextInt(10000));
+                b[j] = (random.nextBoolean() ? -1 : 1) * random.nextInt(10000) / (1.0 + random.nextInt(10000));
+                c[j] = (random.nextBoolean() ? -1 : 1) * random.nextInt(10000) / (1.0 + random.nextInt(10000));
+                bPlusC[j] = b[j] + c[j];
+                kb[j] = k * b[j];
+            }
+
+            Assert.assertEquals(0.0, Exercise1_1_33.Matrix.dot(zero, a), 1e-8);
+            Assert.assertEquals(0.0, Exercise1_1_33.Matrix.dot(a, zero), 1e-8);
+
+            Assert.assertEquals(Exercise1_1_33.Matrix.dot(a, b), Exercise1_1_33.Matrix.dot(b, a), 1e-8);
+
+            Assert.assertEquals(Exercise1_1_33.Matrix.dot(a, bPlusC),
+                    Exercise1_1_33.Matrix.dot(a, b) + Exercise1_1_33.Matrix.dot(a, c), 1e-8);
+
+            Assert.assertEquals(k * Exercise1_1_33.Matrix.dot(a, b),
+                    Exercise1_1_33.Matrix.dot(a, kb), 1e-8);
+        }
     }
 }

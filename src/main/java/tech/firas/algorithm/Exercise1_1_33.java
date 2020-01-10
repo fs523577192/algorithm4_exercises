@@ -1,6 +1,9 @@
 package tech.firas.algorithm;
 
 public final class Exercise1_1_33 {
+
+    private Exercise1_1_33() {}
+
     public static final class Matrix {
         public static double dot(final double[] x, final double[] y) {
             if (x == null || y == null || x.length <= 0 || y.length <= 0) {

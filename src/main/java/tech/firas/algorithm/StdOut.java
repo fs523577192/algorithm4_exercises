@@ -4,6 +4,10 @@ public final class StdOut {
 
     private StdOut() {}
 
+    public static void println(char c) {
+        System.out.println(c);
+    }
+
     public static void println(int n) {
         System.out.println(n);
     }

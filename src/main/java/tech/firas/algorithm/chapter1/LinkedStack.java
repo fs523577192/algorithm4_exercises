@@ -7,12 +7,7 @@ package tech.firas.algorithm.chapter1;
 public class LinkedStack<E> implements Stack<E> {
 
     private Node<E> first = null; // top of stack (most recently added node)
-    private int size; // number of items
-
-    private static class Node<E> {
-        private Node<E> next;
-        private E item;
-    }
+    private int size = 0; // number of items
 
     @Override
     public boolean isEmpty() {
@@ -39,5 +34,10 @@ public class LinkedStack<E> implements Stack<E> {
         this.first = this.first.next;
         this.size -= 1;
         return item;
+    }
+
+    private static class Node<E> {
+        private Node<E> next;
+        private E item;
     }
 }

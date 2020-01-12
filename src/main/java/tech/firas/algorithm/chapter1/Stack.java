@@ -2,6 +2,10 @@ package tech.firas.algorithm.chapter1;
 
 public interface Stack<E> {
 
+    boolean isEmpty();
+
+    int size();
+
     /**
      * Add item to top of stack.
      * @param item the item to be added to the top of the stack
@@ -13,6 +17,4 @@ public interface Stack<E> {
      * @return the item on the top of the stack
      */
     E pop();
-    boolean isEmpty();
-    int size();
 }
